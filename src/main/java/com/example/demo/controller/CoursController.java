@@ -81,7 +81,7 @@ public class CoursController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ROLE_PROF')")
+   @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Cours createCours(@RequestBody Cours nouveauCours) {
         return coursRepository.save(nouveauCours);
     }
@@ -98,7 +98,7 @@ public class CoursController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ROLE_PROF')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Cours updateCours(@PathVariable Integer id, @RequestBody Cours updatedCours) {
         return coursRepository.findById(id)
                 .map(cours -> {
